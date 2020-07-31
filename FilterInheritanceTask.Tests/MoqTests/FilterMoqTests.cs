@@ -19,9 +19,9 @@ namespace FilterInheritanceTask.Tests.MoqTests
 
             Filter filter = mockFilter.Object;
 
-            var source = new[] {11, 121, 31, 20, 33, 56, 234, -231, 678};
+            var source = new[] { 11, 121, 31, 20, 33, 56, 234, -231, 678 };
 
-            var expected = new[] {11, 121, 31, -231};
+            var expected = new[] { 11, 121, 31, -231 };
 
             var actual = filter.Select(source);
 
@@ -48,7 +48,7 @@ namespace FilterInheritanceTask.Tests.MoqTests
             mockFilter.Protected().Verify("Verify", Times.Exactly(count), ItExpr.IsAny<int>());
         }
 
-        private bool Contains(int number, int digit)
+        private static bool Contains(int number, int digit)
         {
             int tmp = Math.Abs(number);
             
