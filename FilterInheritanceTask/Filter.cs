@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace FilterInheritanceTask
 {
@@ -16,7 +17,26 @@ namespace FilterInheritanceTask
         /// <exception cref="ArgumentException">Thrown when array is empty.</exception>
         public int[] Select(int[] source)
         {
-            throw new NotImplementedException();
+            if (source is null)
+            {
+                throw new ArgumentNullException($"Array can not be null.");
+            }
+
+            if (source.Length == 0)
+            {
+                throw new ArgumentException($"Array can not be empty.");
+            }
+
+            var list = new List<int>();
+            for (int i = 0; i < source.Length; i++)
+            {
+                if (this.Verify(source[i]))
+                {
+                    list.Add(source[i]);
+                }
+            }
+
+            return list.ToArray();
         }
 
         /// <summary>
